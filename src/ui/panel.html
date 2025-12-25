@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Reader Assistant</title>
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="panel-container">
+    <!-- Header -->
+    <div class="panel-header">
+      <div class="header-content">
+        <div class="title-group">
+          <h2 class="header-title" id="panel-title">Reader Assistant</h2>
+          <span id="academic-badge" class="badge hidden">Academic Mode</span>
+        </div>
+        <div class="header-actions">
+          <select id="panel-language-select" class="language-select">
+            <option value="zh-CN">中文</option>
+            <option value="en-US">English</option>
+          </select>
+          <button id="close-btn" class="close-button" aria-label="Close panel">×</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="ask-tab">
+        <span class="tab-icon">💬</span>
+        <span class="tab-label">Ask</span>
+      </button>
+      <button class="tab-btn" data-tab="summary-tab">
+        <span class="tab-icon">📄</span>
+        <span class="tab-label">Summary</span>
+      </button>
+      <button class="tab-btn" data-tab="translate-tab">
+        <span class="tab-icon">🌐</span>
+        <span class="tab-label">Translate</span>
+      </button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="panel-content">
+      <!-- Ask Tab -->
+      <div id="ask-tab" class="tab-content">
+        <!-- Question Input -->
+        <div class="question-input-group">
+          <div class="input-row">
+            <input 
+              type="text" 
+              id="question-input" 
+              class="question-input" 
+              placeholder=""
+              autocomplete="off"
+            >
+            <button id="ask-btn" class="btn btn-primary btn-icon">
+              <span></span>
+            </button>
+          </div>
+          <div class="ask-actions">
+            <button id="clear-conversation-btn" class="btn btn-link"></button>
+          </div>
+        </div>
+
+        <!-- Conversation History -->
+        <div id="conversation-history" class="conversation-history"></div>
+      </div>
+
+      <!-- Summary Tab -->
+      <div id="summary-tab" class="tab-content hidden">
+        <div class="summary-controls">
+          <button id="summarize-btn" class="btn btn-primary btn-full">
+            <span class="btn-icon">📝</span>
+            <span class="btn-text"></span>
+          </button>
+          <button id="clear-summary-btn" class="btn btn-link-small"></button>
+        </div>
+        <div id="summary-history" class="summary-history"></div>
+      </div>
+
+      <!-- Translate Tab -->
+      <div id="translate-tab" class="tab-content hidden">
+        <div class="control-card">
+          <div class="control-group">
+            <label for="lang-select" class="control-label"></label>
+            <select id="lang-select" class="lang-select">
+              <option value="zh-CN" selected>中文（默认）</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="ko">한국어</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+          <div class="button-group">
+            <button id="immersive-translate-btn" class="btn btn-primary btn-full">
+              <span class="btn-icon">✨</span>
+              <span class="btn-text"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Immersive Mode Status -->
+        <div class="immersive-controls hidden" id="immersive-controls">
+          <div class="immersive-header">
+            <div class="immersive-status">
+              <span class="status-icon">✨</span>
+              <span class="status-text"></span>
+            </div>
+            <button id="clear-immersive-btn" class="btn btn-link-small"></button>
+          </div>
+          <div class="immersive-desc"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loader Overlay -->
+  <div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+    <div class="loader-text">Processing...</div>
+  </div>
+
+  <script src="panel-script.js"></script>
+</body>
+</html>

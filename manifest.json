@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Reader Assistant",
+  "version": "1.0.0",
+  "description": "AI-powered reading assistant for web pages and PDFs",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "css": ["ui/panel.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "ui/panel.html", 
+        "ui/panel-script.js",
+        "node_modules/pdfjs-dist/build/pdf.worker.min.mjs",
+        "100.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
